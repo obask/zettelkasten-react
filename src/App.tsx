@@ -17,16 +17,22 @@ const routes = [
     {
         path: "/",
         exact: true,
+        icon: "bi-kanban",
+        pageName: "Link 0",
         sidebar: () => <div>home!</div>,
         main: () => <h2>Home</h2>
     },
     {
         path: "/bubblegum",
+        icon: "bi-kanban",
+        pageName: "Link 1",
         sidebar: () => <div>bubblegum!</div>,
         main: () => <h2>Bubblegum</h2>
     },
     {
         path: "/shoelaces",
+        icon: "bi-kanban",
+        pageName: "Link 2",
         sidebar: () => <div>shoelaces!</div>,
         main: () => <h2>Shoelaces</h2>
     }
