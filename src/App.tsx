@@ -1,38 +1,40 @@
 import React from 'react';
-
-import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
-
-import ButtonsShowcase from './components/Buttons';
-import ToastsShowcase from './components/Toasts';
 import Sidebar from "./components/Sidebar";
 
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch,} from "react-router-dom";
+import InstapaperView from "./pages/InstapaperView";
+import NotionView from "./pages/NotionView";
+import SlateView from "./pages/SlateView";
+import HomeView from "./pages/HomeView";
 
 const routes = [
     {
         path: "/",
         exact: true,
         icon: "bi-kanban",
-        pageName: "Link 0",
-        sidebar: () => <div>home!</div>,
-        main: () => <h2>Home</h2>
+        pageName: "SlateView",
+        sidebar: () => <div>SlateView!</div>,
+        main: () => <h2>SlateView TMP</h2>
     },
     {
         path: "/bubblegum",
         icon: "bi-kanban",
-        pageName: "Link 1",
+        pageName: "Instapaper",
         sidebar: () => <div>bubblegum!</div>,
         main: () => <h2>Bubblegum</h2>
     },
     {
+        path: "/homeView",
+        icon: "bi-kanban",
+        pageName: "HomeView",
+        sidebar: () => <div>homeView!</div>,
+        main: () => <h2>homeView TMP</h2>
+    },
+    {
         path: "/shoelaces",
         icon: "bi-kanban",
-        pageName: "Link 2",
+        pageName: "Shoelaces",
         sidebar: () => <div>shoelaces!</div>,
         main: () => <h2>Shoelaces</h2>
     }
@@ -42,43 +44,27 @@ const App: React.FC = () => {
     return (
         <Router>
             <Sidebar routes={routes}/>
-
             <div className="main">
-
-                <div >
+                <div>
                     <Switch>
                         <Route exact path="/">
-                            <Container className="p-3">
-                                <Jumbotron>
-                                    <h1 className="header">
-                                        Welcome To React-Bootstrap TypeScript Example
-                                    </h1>
-                                </Jumbotron>
-                                <h2>Buttons</h2>
-                                <ButtonsShowcase/>
-                                <h2>Toasts</h2>
-                                <ToastsShowcase/>
+                            <Container>
+                                <SlateView />
                             </Container>
                         </Route>
                         <Route path="/bubblegum">
-                            <Container >
-
-                            <h2>Bubblegum</h2>
-                            f
-                            fdsa
-                            f
-                            dsaf
-                            dsafdsaf
+                            <Container>
+                                <InstapaperView />
+                            </Container>
+                        </Route>
+                        <Route path="/homeView">
+                            <Container>
+                                <HomeView />
                             </Container>
                         </Route>
                         <Route path="/shoelaces">
-                            <Container >
-                                <h2>shoelaces</h2>
-                                f
-                                fdsa
-                                f
-                                dsaf
-                                dsafdsaf
+                            <Container>
+                                <NotionView/>
                             </Container>
                         </Route>
                     </Switch>
