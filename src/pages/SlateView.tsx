@@ -11,7 +11,7 @@ import {
     withReact,
 } from 'slate-react'
 import { withHistory } from 'slate-history'
-import { css } from 'emotion'
+import { css } from '@emotion/css'
 
 import { Button, Icon } from '../components/components'
 import { CustomEditor, ImageElement} from './custom-types'
