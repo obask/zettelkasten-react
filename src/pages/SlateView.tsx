@@ -17,14 +17,19 @@ import { Button, Icon } from '../components/components'
 import { CustomEditor, ImageElement} from './custom-types'
 
 const ImagesExample = () => {
-    const [value, setValue] = useState<Descendant[]>(initialValue)
-    const editor = useMemo(
+    const [value, setValue] = React.useState<Descendant[]>(initialValue)
+    const editor = React.useMemo(
         () => withImages(withHistory(withReact(createEditor()))),
         []
     )
 
+    function getOnChange(value: Descendant[]) {
+        setValue(value)
+        // console.log(value)
+    }
+
     return (
-        <Slate editor={editor} value={value} onChange={value => setValue(value)}>
+        <Slate editor={editor} value={value} onChange={getOnChange}>
             <InsertImageButton/>
             <Editable
                 renderElement={props => <Element {...props} />}
@@ -123,7 +128,7 @@ const InsertImageButton = () => {
                 insertImage(editor, url!)
             }}
         >
-            <Icon>image</Icon>
+            <Icon>insert image</Icon>
         </Button>
     )
 }

@@ -7,6 +7,9 @@ import InstapaperView from "./pages/InstapaperView";
 import NotionView from "./pages/NotionView";
 import SlateView from "./pages/SlateView";
 import HomeView from "./pages/HomeView";
+import CheckLists from "./pages/CheckLists";
+import LexicalEditorView from "./pages/LexicalEditorView";
+import MyEditor from "./lexi/MyEditor";
 
 const routes = [
     {
@@ -32,12 +35,26 @@ const routes = [
         main: () => <h2>homeView TMP</h2>
     },
     {
-        path: "shoelaces",
+        path: "checkLists",
         icon: "bi-kanban",
-        pageName: "Shoelaces",
-        sidebar: () => <div>shoelaces!</div>,
-        main: () => <h2>Shoelaces</h2>
-    }
+        pageName: "CheckLists",
+        sidebar: () => <div>CheckLists!</div>,
+        main: () => <h2>CheckLists</h2>
+    },
+    {
+        path: "lexicalEditor",
+        icon: "bi-kanban",
+        pageName: "LexicalEditor",
+        sidebar: () => <div>LexicalEditor!</div>,
+        main: () => <h2>LexicalEditor</h2>
+    },
+    {
+        path: "myEditor",
+        icon: "bi-kanban",
+        pageName: "MyEditor",
+        sidebar: () => <div>MyEditor!</div>,
+        main: () => <h2>MyEditor</h2>
+    },
 ]
 
 const App: React.FC = () => {
@@ -45,20 +62,26 @@ const App: React.FC = () => {
         <BrowserRouter>
             <Sidebar routes={routes}/>
             <div style={{marginLeft: '160px', paddingTop: '10px'}}>
-                    <Routes>
-                        <Route path="/" element={<Container>
-                            <SlateView/>
-                        </Container>}/>
-                        <Route path="bubblegum" element={<Container>
-                            <InstapaperView/>
-                        </Container>}/>
-                        <Route path="homeView" element={<Container>
-                            <HomeView/>
-                        </Container>}/>
-                        <Route path="shoelaces" element={<Container>
-                            <h3>Not implemented...</h3>
-                        </Container>} />
-                    </Routes>
+                <Routes>
+                    <Route path="/" element={<Container>
+                        <SlateView/>
+                    </Container>}/>
+                    <Route path="bubblegum" element={<Container>
+                        <InstapaperView/>
+                    </Container>}/>
+                    <Route path="homeView" element={<Container>
+                        <HomeView/>
+                    </Container>}/>
+                    <Route path="checkLists" element={<Container>
+                        <CheckLists/>
+                    </Container>}/>
+                    <Route path="lexicalEditor" element={<Container>
+                        <LexicalEditorView/>
+                    </Container>}/>
+                    <Route path="myEditor" element={<Container>
+                        <MyEditor/>
+                    </Container>}/>
+                </Routes>
             </div>
         </BrowserRouter>
     )
