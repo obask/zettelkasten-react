@@ -63,7 +63,7 @@ const App: React.FC = () => {
             <Sidebar routes={routes}/>
             <div style={{marginLeft: '160px', paddingTop: '10px'}}>
                 <Routes>
-                    <Route path="/" element={<Container>
+                    <Route path="xuz" element={<Container>
                         <SlateView/>
                     </Container>}/>
                     <Route path="bubblegum" element={<Container>
@@ -78,7 +78,7 @@ const App: React.FC = () => {
                     <Route path="lexicalEditor" element={<Container>
                         <LexicalEditorView/>
                     </Container>}/>
-                    <Route path="rtfEditor" element={<Container>
+                    <Route index element={<Container>
                         <RtfEditor/>
                     </Container>}/>
                 </Routes>

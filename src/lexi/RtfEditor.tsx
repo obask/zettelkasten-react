@@ -12,18 +12,15 @@ import {TableCellNode, TableNode, TableRowNode} from "@lexical/table";
 import {ListItemNode, ListNode} from "@lexical/list";
 import {CodeHighlightNode, CodeNode} from "@lexical/code";
 import {AutoLinkNode, LinkNode} from "@lexical/link";
-import {$generateHtmlFromNodes} from "./lib/helpers";
 import LinkPlugin from "@lexical/react/LexicalLinkPlugin";
 import ListPlugin from "@lexical/react/LexicalListPlugin";
 import LexicalMarkdownShortcutPlugin from "@lexical/react/LexicalMarkdownShortcutPlugin";
-import {TRANSFORMERS} from "@lexical/markdown";
+import {$convertToMarkdownString, TRANSFORMERS} from "@lexical/markdown";
 import {useLexicalComposerContext} from "@lexical/react/LexicalComposerContext";
 
 import ListMaxIndentLevelPlugin from "./plugins/ListMaxIndentLevelPlugin";
 import CodeHighlightPlugin from "./plugins/CodeHighlightPlugin";
 import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
-import {useCallback} from "react";
-import {$getRoot} from "lexical";
 
 function Placeholder() {
     return <div className="editor-placeholder">Enter some rich text...</div>;
@@ -55,27 +52,43 @@ const editorConfig = {
 function MyFunPlugin() {
     const [editor] = useLexicalComposerContext()
 
-    editor.update(() => {
-        // const tmp = $generateHtmlFromNodes(editor);
-        const root = $getRoot();
+    // editor.update(() => {
+    //     const tmp = $generateHtmlFromNodes(editor)
+    //     // const root = $getRoot()
+    //
+    //     console.log(tmp)
+    // })
 
-        console.log(root);
+    // editor.update(() => {
+    //     const tmp = $convertToMarkdownString(TRANSFORMERS);
+    //     console.log("OLOLO:")
+    //     console.log(tmp)
+    // });
+
+
+    editor.registerUpdateListener(({editorState}) => {
+        // const tmp = $convertToMarkdownString(TRANSFORMERS);
+        console.log("OLOLO:")
+        // console.log(tmp)
+
+
+        editorState.read(() => {
+            const tmp = $convertToMarkdownString(TRANSFORMERS)
+            // const tmp = $generateHtmlFromNodes(editor)
+            console.log(tmp)
+        })
     })
 
-
     let onClick = () => {
-        // editor.registerUpdateListener(({editorState}) => {
-        //     editorState.read(() => {
-        //         // return () => {
-        //         const tmp = $generateHtmlFromNodes(editor);
-        //         console.log(tmp);
-        //         // }
-        //     })
-        // })
-        console.log(editor.getEditorState())
+
+
+        // editor.parseEditorState()
+
+        let editorState = editor.getEditorState();
+        console.log(JSON.stringify(editorState))
     }
     return (
-        <button onClick={onClick}>Click Me</button>
+        <button onClick={onClick}>Save as JSON</button>
     )
 }
 
