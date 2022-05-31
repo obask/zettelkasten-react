@@ -9,7 +9,7 @@ import SlateView from "./pages/SlateView";
 import HomeView from "./pages/HomeView";
 import CheckLists from "./pages/CheckLists";
 import LexicalEditorView from "./pages/LexicalEditorView";
-import MyEditor from "./lexi/MyEditor";
+import RtfEditor from "./lexi/RtfEditor";
 
 const routes = [
     {
@@ -49,11 +49,11 @@ const routes = [
         main: () => <h2>LexicalEditor</h2>
     },
     {
-        path: "myEditor",
+        path: "rtfEditor",
         icon: "bi-kanban",
-        pageName: "MyEditor",
-        sidebar: () => <div>MyEditor!</div>,
-        main: () => <h2>MyEditor</h2>
+        pageName: "RtfEditor",
+        sidebar: () => <div>RtfEditor!</div>,
+        main: () => <h2>RtfEditor</h2>
     },
 ]
 
@@ -78,8 +78,8 @@ const App: React.FC = () => {
                     <Route path="lexicalEditor" element={<Container>
                         <LexicalEditorView/>
                     </Container>}/>
-                    <Route path="myEditor" element={<Container>
-                        <MyEditor/>
+                    <Route path="rtfEditor" element={<Container>
+                        <RtfEditor/>
                     </Container>}/>
                 </Routes>
             </div>
